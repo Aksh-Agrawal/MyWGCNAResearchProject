@@ -1,21 +1,64 @@
-# Path to raw expression data (CSV with genes×samples)
+# Enhanced WGCNA Configuration
+# ==============================
+
+# Input data
 expr_file: "data/raw/example_expression.csv"
 
-# Preprocessing
-norm_method: "vst"            # "vst" or "log2"
-topN:        10000            # number of highest-variance genes to keep
+# Advanced preprocessing
+norm_method: "log2" # "vst", "log2", "quantile", "rle"
+topN: 10000 # number of highest-variance genes to keep
+min_expr: 1.0 # minimum expression threshold
+min_samples: 3 # minimum samples with expression above threshold
+cv_threshold: 0.1 # coefficient of variation threshold
 
-# Soft‐threshold power scanning
-powers:      [1,2,3,4,5,6,7,8,9,10,12,14,16,18,20]
-tom_type:    "unsigned"       # "unsigned" or "signed"
-cor_type:    "pearson"        # "pearson" or "bicor"
+# Quality control
+outlier_z: 2.5 # Z-score cutoff for outlier detection
+mad_cut: 3.0 # MAD-based outlier threshold
+connectivity_cut: -2.5 # network connectivity outlier threshold
+detect_batch_effects: true # whether to test for batch effects
 
-# Module detection
-deep_split:       2           # dynamicTreeCut sensitivity (0–4)
-min_module_size: 30           # smallest module size
-merge_height:     0.25        # merge modules whose eigengenes correlate > (1–merge_height)
+# Enhanced soft-threshold selection
+powers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24]
+tom_type: "unsigned" # "unsigned" or "signed"
+cor_type: "pearson" # "pearson" or "bicor"
+R2_cut: 0.80 # minimum scale-free R²
+slope_threshold: -1.0 # minimum slope for scale-free fit
+mean_k_target: null # target mean connectivity (auto if null)
 
-# Outlier removal & stability
-outlier_z:      2.5          # Z-score cutoff for removing sample outliers
-bootstrap:      false        # whether to bootstrap for stability
-n_boot:         100          # bootstrap iterations if enabled
+# Advanced network construction
+max_block_size: 5000 # maximum genes per block for large datasets
+network_verbose: true # detailed network construction logging
+
+# Enhanced module detection
+deep_split: 2 # dynamicTreeCut sensitivity (0–4)
+min_module_size: 30 # smallest module size after merging
+merge_height: 0.25 # merge modules with eigengene correlation > (1-merge_height)
+pam_stage: true # use PAM stage in dynamic tree cutting
+alternative_methods: ["ward.D2", "complete"] # additional clustering methods
+
+# Module validation and stability
+bootstrap: true # bootstrap stability assessment
+n_boot: 100 # bootstrap iterations
+stability_threshold: 0.7 # minimum stability for robust modules
+
+# Visualization and reporting
+plot_format: "png" # "png", "pdf", "svg"
+plot_width: 1200 # plot width in pixels/points
+plot_height: 900 # plot height in pixels/points
+plot_dpi: 300 # resolution for bitmap formats
+
+# Advanced analysis options
+calculate_module_traits: true # correlate modules with sample traits
+trait_file: null # path to sample trait file (optional)
+go_enrichment: false # perform GO enrichment analysis
+pathway_databases: ["KEGG", "GO"] # databases for enrichment
+
+# Performance and memory
+max_memory_gb: 8 # maximum memory usage
+use_parallel: true # enable parallel processing
+n_cores: null # number of cores (auto-detect if null)
+
+# Output options
+save_intermediate: true # save intermediate results
+compress_outputs: true # compress large output files
+detailed_reports: true # generate comprehensive HTML reports

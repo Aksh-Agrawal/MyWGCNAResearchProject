@@ -1,0 +1,13 @@
+Enhanced WGCNA Analysis Summary
+===============================
+
+Input: 40 samples × 1000 genes
+Selected Power: 16 (max_R2)
+Network Density: 0.0011
+TOM Sparsity: 1.00
+Modules Detected: 4 -> 2 (50.0% reduction)
+Unassigned Genes: 80.0%
+
+Method Comparison:
+  Primary (average): 4 modules
+  complete: 1 modules (0.87 agreement)

@@ -1,7 +1,7 @@
 # ok.R — development entrypoint
 
 # 1. Set your project root
-setwd("~/MyWGCNAResearchProject")
+setwd("d:/r/New folder (3)/MyWGCNAResearchProject")
 
 # 2. Load devtools so we can source the package code
 if (!requireNamespace("devtools", quietly=TRUE)) install.packages("devtools")
