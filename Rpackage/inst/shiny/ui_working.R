@@ -42,62 +42,23 @@ ui <- dashboardPage(
     # Enhanced CSS styling
     tags$head(
       tags$style(HTML("
-        /* Fix blurring and improve clarity */
-        * {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          text-rendering: optimizeLegibility;
-        }
-        
         .main-header .navbar {
           background-color: #3c8dbc;
         }
         .main-header .logo {
           background-color: #367fa9;
         }
-        
-        /* Improve box clarity */
         .box {
           border-radius: 5px;
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          background-color: #ffffff;
-          border: 1px solid #d2d6de;
         }
-        
-        /* Clear button styling */
         .btn-primary {
           background-color: #3c8dbc;
           border-color: #367fa9;
-          font-weight: 500;
         }
         .btn-primary:hover {
           background-color: #367fa9;
           border-color: #2e6da4;
-        }
-        
-        /* Improve text clarity */
-        .content-wrapper, .right-side {
-          background-color: #ecf0f5;
-        }
-        
-        /* Fix any potential transform issues */
-        .skin-blue .main-sidebar {
-          background-color: #222d32;
-        }
-        
-        /* Ensure proper z-index */
-        .main-header {
-          z-index: 1000;
-        }
-        
-        /* Improve table readability */
-        .dataTables_wrapper {
-          font-size: 14px;
-        }
-        
-        /* Fix any blur effects */
-        .content {
-          padding: 20px;
         }
       "))
     ),
